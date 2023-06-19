@@ -21,7 +21,8 @@ import threading
 from typing import Any, ClassVar, Dict, Iterable, Optional, Sequence, Tuple, Union
 
 from absl import logging
-import tensorflow.compat.v2 as tf
+# import tensorflow.compat.v2 as tf
+import tensorflow as tf
 import tensorflow_text as tf_text
 
 from sentencepiece import sentencepiece_model_pb2
