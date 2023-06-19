@@ -23,7 +23,8 @@ from typing import Any, ClassVar, Dict, Iterable, Optional, Sequence, Tuple, Uni
 from absl import logging
 # import tensorflow.compat.v2 as tf
 import tensorflow as tf
-import tensorflow_text as tf_text
+# import tensorflow_text as tf_text
+from tensorflow_text import SentencepieceTokenizer, BertTokenizer
 
 from sentencepiece import sentencepiece_model_pb2
 import sentencepiece as sentencepiece_processor
@@ -419,7 +420,8 @@ class SentencePieceVocabulary(Vocabulary):
   @property
   def tf_tokenizer(self):
     """Instantiate and return a TF tokenizer."""
-    return tf_text.SentencepieceTokenizer(model=self.sp_model)
+    # return tf_text.SentencepieceTokenizer(model=self.sp_model)
+    return SentencepieceTokenizer(model=self.sp_model)
 
   @property
   def vocab_size(self):
@@ -928,7 +930,8 @@ class BertWordPieceVocabulary(Vocabulary):
     self._keep_whitespace = keep_whitespace
     self._normalization_form = normalization_form
     self._preserve_unused_token = preserve_unused_token
-    self._tokenizer = tf_text.BertTokenizer(
+    # self._tokenizer = tf_text.BertTokenizer(
+    self._tokenizer = BertTokenizer(
         vocab_lookup_table=vocab_lookup_table,
         suffix_indicator=suffix_indicator,
         max_bytes_per_word=max_bytes_per_word,
